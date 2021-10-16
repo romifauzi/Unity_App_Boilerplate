@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using DG.Tweening;
 
 namespace Locglo.Boilerplate
@@ -9,14 +8,15 @@ namespace Locglo.Boilerplate
     public class UIRectMove : BaseTween
     {
         [SerializeField] Vector2 movePos;
-        [SerializeField] float duration;
         private RectTransform rect;
+
+        private Vector3 initialPos, targetPos;
 
         public override void Initialize()
         {
             rect = GetComponent<RectTransform>();
-            Vector2 initialPos = rect.anchoredPosition;
-            Vector2 targetPos = initialPos + movePos;
+            initialPos = invertTween ? rect.anchoredPosition + movePos : rect.anchoredPosition;
+            targetPos = invertTween ? rect.anchoredPosition  : rect.anchoredPosition + movePos;
 
             InitSeq();
 
@@ -26,8 +26,7 @@ namespace Locglo.Boilerplate
             reverseSeq.AppendCallback(delegate { rect.anchoredPosition = targetPos; });
             reverseSeq.Append(rect.DOAnchorPos(initialPos, duration)).SetEase(easeType);
 
-            forwardSeq.SetAutoKill(false).Pause();
-            reverseSeq.SetAutoKill(false).Pause();
+            base.Initialize();
         }
     }
 }

@@ -9,7 +9,10 @@ namespace Locglo.Boilerplate
     {
         [SerializeField] protected Ease easeType = Ease.InOutQuad;
         [SerializeField] protected bool invertTween;
+        [SerializeField] protected float duration = 0.5f;
         protected Sequence forwardSeq, reverseSeq;
+
+        private bool firstRun = true;
 
         /// <summary>
         /// callback on start of the display sequence
@@ -81,7 +84,13 @@ namespace Locglo.Boilerplate
         /// <param name="reverse">reverse play sequence</param>
         public virtual void PlaySequence(bool reverse = false)
         {
-            GetTween(reverse).Restart();
+            if (firstRun)
+            {
+                GetTween(reverse).Play();
+                firstRun = false;
+            }
+            else
+                GetTween(reverse).Restart();
         }
     }
 }

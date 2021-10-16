@@ -21,7 +21,8 @@ namespace Locglo.Boilerplate
         public override IEnumerator Setup(ApplicationController applicationController)
         {
             AddState(new StartState(applicationController));
-            AddState( new MainState(applicationController));
+            AddState(new MainState(applicationController));
+            AddState(new HelpState(applicationController));
             yield return base.Setup(applicationController);
         }
 

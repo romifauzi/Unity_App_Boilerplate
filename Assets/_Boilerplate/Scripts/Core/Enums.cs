@@ -27,7 +27,8 @@ namespace Locglo.Boilerplate
         {
             NONE,
             START,
-            MAIN
+            MAIN,
+            HELP
         }
 
         /// <summary>
@@ -36,7 +37,8 @@ namespace Locglo.Boilerplate
         public enum EViewName
         {
             START,
-            MAIN
+            MAIN,
+            HELP
         }
     }
 }
