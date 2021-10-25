@@ -13,12 +13,14 @@ namespace Locglo.Boilerplate
         [Header("Managers")]
         [SerializeField] private LogicManager logicManager;
         [SerializeField] private UIManager uiManager;
+        [SerializeField] private TouchManager touchManager;
         #endregion
 
         #region Properties
-        public ApplicationController Instance { get; private set; }
+        public static ApplicationController Instance { get; private set; }
         public LogicManager LogicManager { get => logicManager; }
         public UIManager UiManager { get => uiManager; }
+        public TouchManager TouchManager { get => touchManager; }
         #endregion
 
         private void Awake()
@@ -36,6 +38,7 @@ namespace Locglo.Boilerplate
         {
             yield return LogicManager.Setup(this);
             yield return UiManager.Setup(this);
+            yield return TouchManager.Setup(this);
 
             LogicManager.SwitchState(startState);
         }

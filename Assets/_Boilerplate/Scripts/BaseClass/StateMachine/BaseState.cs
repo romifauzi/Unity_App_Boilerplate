@@ -26,7 +26,7 @@ namespace Locglo.Boilerplate
 
         public virtual void StateUpdate()
         {
-            Debug.LogFormat("{0} state updates", stateName);
+            //Debug.LogFormat("{0} state updates", stateName);
         }
 
         public virtual IEnumerator StateEnd()
