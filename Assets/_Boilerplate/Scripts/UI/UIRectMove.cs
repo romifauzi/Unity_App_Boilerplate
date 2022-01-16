@@ -12,7 +12,7 @@ namespace Locglo.Boilerplate
 
         private Vector3 initialPos, targetPos;
 
-        public override void Initialize()
+        public override void Initialize(bool ignoreTimeScale = false)
         {
             rect = GetComponent<RectTransform>();
             initialPos = invertTween ? rect.anchoredPosition + movePos : rect.anchoredPosition;
@@ -26,7 +26,7 @@ namespace Locglo.Boilerplate
             reverseSeq.AppendCallback(delegate { rect.anchoredPosition = targetPos; });
             reverseSeq.Append(rect.DOAnchorPos(initialPos, duration)).SetEase(easeType);
 
-            base.Initialize();
+            base.Initialize(ignoreTimeScale);
         }
     }
 }

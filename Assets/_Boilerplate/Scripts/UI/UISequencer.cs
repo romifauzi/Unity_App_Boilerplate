@@ -12,7 +12,39 @@ namespace Locglo.Boilerplate
         [SerializeField] ESequenceType sequenceType;
         [SerializeField] float staggerInterval;
 
-        public override void Initialize()
+        #region EDITOR
+#if UNITY_EDITOR
+        private Vector3 pos, scale;
+        private Quaternion rot;
+        private float canvasAlpha;
+
+        public void GrabInitialState()
+        {
+            pos = transform.position;
+            rot = transform.rotation;
+            scale = transform.localScale;
+
+            if (TryGetComponent(out CanvasGroup canvas))
+            {
+                canvasAlpha = canvas.alpha;
+            }
+        }
+
+        public void RestoreInitialState()
+        {
+            transform.position = pos;
+            transform.rotation = rot;
+            transform.localScale = scale;
+
+            if (TryGetComponent(out CanvasGroup canvas))
+            {
+                canvas.alpha = canvasAlpha;
+            }
+        }
+#endif
+        #endregion
+
+        public override void Initialize(bool ignoreTimeScale = false)
         {
             InitSeq();
 
@@ -23,7 +55,7 @@ namespace Locglo.Boilerplate
                 AddTween(sequenceType, reverseSeq, tweens[i].GetTween(true), i * staggerInterval);
             }
 
-            base.Initialize();
+            base.Initialize(ignoreTimeScale);
         }
 
         void AddTween(ESequenceType type, Sequence seq, Sequence tween, float step)

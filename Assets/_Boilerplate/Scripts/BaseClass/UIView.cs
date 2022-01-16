@@ -11,11 +11,14 @@ namespace Locglo.Boilerplate
     {
         [SerializeField] BaseTween displayTween;
         [SerializeField] bool hideOnStart = true;
-        [SerializeField] bool hideGameObjectOnDisable;
+        [SerializeField] protected bool hideGameObjectOnDisable;
+        [SerializeField] bool ignoreTimeScale;
         [SerializeField] EViewName viewName;
 
         protected Canvas canvas;
         protected ApplicationController applicationController;
+
+        public bool IsActive => canvas.enabled && gameObject.activeInHierarchy;
 
         public EViewName ViewName { get => viewName; }
 
@@ -27,19 +30,22 @@ namespace Locglo.Boilerplate
         // Start is called before the first frame update
         protected virtual void Start()
         {
-            displayTween.Initialize();
+            displayTween?.Initialize(ignoreTimeScale);
 
             if (hideOnStart)
                 OnHideEnd();
         }
 
-        public void SetupView(ApplicationController applicationController)
+        public virtual void SetupView(ApplicationController applicationController)
         {
             this.applicationController = applicationController;
         }
 
         protected virtual void OnEnable()
         {
+            if (displayTween == null)
+                return;
+
             displayTween.onDisplayStart += OnDisplayStart;
             displayTween.onDisplayEnd += OnDisplayEnd;
             displayTween.onHideStart += OnHideStart;
@@ -48,6 +54,9 @@ namespace Locglo.Boilerplate
 
         protected virtual void OnDisable()
         {
+            if (displayTween == null)
+                return;
+
             displayTween.onDisplayStart -= OnDisplayStart;
             displayTween.onDisplayEnd -= OnDisplayEnd;
             displayTween.onHideStart -= OnHideStart;

@@ -11,7 +11,7 @@ namespace Locglo.Boilerplate
         [SerializeField] private float targetAlpha = 0f;
 
         private float _initAlpha, _targetAlpha;
-        public override void Initialize()
+        public override void Initialize(bool ignoreTimeScale = false)
         {
             _initAlpha = invertTween ? targetAlpha : fadeCanvas.alpha;
             _targetAlpha = invertTween ? fadeCanvas.alpha : targetAlpha;
@@ -26,7 +26,7 @@ namespace Locglo.Boilerplate
             reverseSeq.AppendCallback(delegate { fadeCanvas.alpha = _targetAlpha; });
             reverseSeq.Append(fadeCanvas.DOFade(_initAlpha, duration)).SetEase(easeType);
 
-            base.Initialize();
+            base.Initialize(ignoreTimeScale);
         }
     }
 }

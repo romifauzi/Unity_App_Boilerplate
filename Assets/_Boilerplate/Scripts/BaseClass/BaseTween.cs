@@ -31,8 +31,10 @@ namespace Locglo.Boilerplate
         /// </summary>
         public event System.Action onHideEnd;
 
-        public virtual void Initialize()
+        public virtual void Initialize(bool ignoreTimeScale = false)
         {
+            forwardSeq.SetUpdate(ignoreTimeScale);
+            reverseSeq.SetUpdate(ignoreTimeScale); 
             forwardSeq.SetAutoKill(false).PrependCallback(OnDisplayStart).AppendCallback(OnDisplayEnd);
             reverseSeq.SetAutoKill(false).PrependCallback(OnHideStart).AppendCallback(OnHideEnd);
             forwardSeq.Pause();
@@ -48,25 +50,25 @@ namespace Locglo.Boilerplate
         protected virtual void OnDisplayStart()
         {
             onDisplayStart?.Invoke();
-            Debug.Log("Display Tween Start", gameObject);
+            Extensions.Log(gameObject, "Display Tween Start");
         }
 
         protected virtual void OnDisplayEnd()
         {
             onDisplayEnd?.Invoke();
-            Debug.Log("Display Tween End", gameObject);
+            Extensions.Log(gameObject, "Display Tween End");
         }
 
         protected virtual void OnHideStart()
         {
             onHideStart?.Invoke();
-            Debug.Log("Hide Tween Start", gameObject);
+            Extensions.Log(gameObject, "Hide Tween Start");
         }
 
         protected virtual void OnHideEnd()
         {
             onHideEnd?.Invoke();
-            Debug.Log("Hide Tween End", gameObject);
+            Extensions.Log(gameObject, "Hide Tween End");
         }
 
         /// <summary>

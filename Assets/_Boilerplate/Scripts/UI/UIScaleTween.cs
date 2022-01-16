@@ -11,7 +11,7 @@ namespace Locglo.Boilerplate
 
         private Vector3 _initScale, _targetScale;
 
-        public override void Initialize()
+        public override void Initialize(bool ignoreTimeScale = false)
         {
             _initScale = invertTween ? targetScale : transform.localScale;
             _targetScale = invertTween ? transform.localScale : targetScale;
@@ -24,7 +24,7 @@ namespace Locglo.Boilerplate
             reverseSeq.AppendCallback(delegate { transform.localScale = _targetScale; });
             reverseSeq.Append(transform.DOScale(_initScale, duration)).SetEase(easeType);
 
-            base.Initialize();
+            base.Initialize(ignoreTimeScale);
         }
     }
 }
