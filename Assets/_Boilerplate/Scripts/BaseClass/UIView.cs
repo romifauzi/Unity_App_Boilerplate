@@ -89,6 +89,8 @@ namespace Locglo.Boilerplate
 
         protected virtual void OnHideEnd()
         {
+			if (displayTween.IsSequencePlaying())
+                return;									 
             if (hideGameObjectOnDisable)
             {
                 gameObject.SetActive(false);

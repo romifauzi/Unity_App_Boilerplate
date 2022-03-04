@@ -94,5 +94,9 @@ namespace Locglo.Boilerplate
             else
                 GetTween(reverse).Restart();
         }
+        public bool IsSequencePlaying()
+        {
+            return reverseSeq.IsPlaying() || forwardSeq.IsPlaying();
+        }							   
     }
 }
