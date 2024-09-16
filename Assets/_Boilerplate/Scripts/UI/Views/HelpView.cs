@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Locglo.Boilerplate
+namespace BoilerplateRomi.Views
 {
     public class HelpView : UIView
     {
@@ -17,7 +17,7 @@ namespace Locglo.Boilerplate
 
         void GoToMainState()
         {
-            applicationController.LogicManager.SwitchState(Enums.EStateName.MAIN);
+            _applicationController.LogicManager.SwitchState(Enums.EStateName.MAIN);
         }
     }
 }

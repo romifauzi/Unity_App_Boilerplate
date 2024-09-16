@@ -13,7 +13,7 @@ namespace BoilerplateRomi.Boilerplate
         // Start is called before the first frame update
         void Start()
         {
-            // StartCoroutine(Setup(Main.Instance));
+            StartCoroutine(Setup(ApplicationController.Instance));
             rectTransform = GetComponent<RectTransform>();
         }
 

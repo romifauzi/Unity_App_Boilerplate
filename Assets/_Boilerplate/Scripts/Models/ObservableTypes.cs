@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace McKenna.Models
+namespace BoilerplateRomi.Models
 {
     public class Observable<T>
     {

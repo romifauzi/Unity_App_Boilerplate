@@ -23,23 +23,10 @@ namespace BoilerplateRomi.Enums
     /// </summary>
     public enum EStateName
     {
-        None,
-        Viewer,
-        Initialize,
-        AR,
-        Disconnected,
-        Menu,
-        UserLogin,
-        UserRegister,
-        ScanState,
-        AssetLibraryState,
-        DomainList,
-        LayersList,
-        Settings,
-        UserProfile,
-        ForgotPassword,
-        Halt,
-        ManageWallet
+        MAIN,
+        START,
+        HELP,
+        NONE
     }
 
     /// <summary>
@@ -47,41 +34,7 @@ namespace BoilerplateRomi.Enums
     /// </summary>
     public enum EViewName
     {
-        NavBar,
-        Initialize,
-        UserView,
-        ScanView,
-        DomainsList,
-        LayersList,
-        AssetsList,
-        AssetsLibrary,
-        AssetsPlacing,
-        ARView,
-        ProfileView,
-        Settings
-    }
-    
-    public enum EventId
-    {
-        AllowScanning,
-        EventTest2
-    }
-
-    public enum AssetEnum
-    {
-        Notes = 0,
-        Signage = 1,
-        Glb = 2,
-        Nft = 3
-    }
-
-    public enum MediaTypeEnum
-    {
-        Images = 0,
-        Videos = 1,
-        Glb = 2,
-        Notes = 3,
-        Nft = 4
+        
     }
 
     public enum IconType

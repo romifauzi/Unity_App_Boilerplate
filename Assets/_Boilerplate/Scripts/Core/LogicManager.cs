@@ -1,16 +1,16 @@
 using System.Collections;
-using System.Collections.Generic;
 using BoilerplateRomi.StateMachine;
-using UnityEngine;
 
 namespace BoilerplateRomi
 {
     public class LogicManager : BaseStateMachine
     {
-
-        public override void CoreUpdate()
+        public override IEnumerator Setup(ApplicationController applicationController)
         {
-            base.CoreUpdate();
+            AddState(new StartState(applicationController));
+            AddState(new MainState(applicationController));
+            AddState(new HelpState(applicationController));
+            return base.Setup(applicationController);
         }
     }
 }

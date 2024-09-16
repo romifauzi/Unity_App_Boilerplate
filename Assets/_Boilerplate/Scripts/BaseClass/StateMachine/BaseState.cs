@@ -1,23 +1,20 @@
 using System.Collections;
-using System.Collections.Generic;
 using BoilerplateRomi.Enums;
-using McKenna;
 using UnityEngine;
-using EventId = McKenna.EventId;
 
 namespace BoilerplateRomi.StateMachine
 {
     public class BaseState
     {
-        //protected Main Main;
+        protected ApplicationController _applicationController;
         protected readonly EStateName EStateName;
         protected static object Payload;
 
         public EStateName StateName { get => EStateName; }
 
-        public BaseState(Main main, EStateName eStateName)
+        public BaseState(ApplicationController applicationController, EStateName eStateName)
         {
-            //this.Main = main;
+            _applicationController = applicationController;
             this.EStateName = eStateName;
         }
 
@@ -25,7 +22,7 @@ namespace BoilerplateRomi.StateMachine
         {
             Extensions.Log("Time: {0}, {1} state started", Time.time, EStateName);
             yield return null;
-            EventsController.AddListener(EventId.OnBackPressed, OnBackPressed);
+            EventController.AddListener(EventId.OnBackPressedAndroid, OnBackPressed);
         }
 
         public virtual void StateUpdate()
@@ -37,7 +34,7 @@ namespace BoilerplateRomi.StateMachine
         {
             Extensions.Log("Time: {0}, {1} state ended", Time.time, EStateName);
             yield return null;
-            EventsController.RemoveListener(EventId.OnBackPressed, OnBackPressed);
+            EventController.RemoveListener(EventId.OnBackPressedAndroid, OnBackPressed);
         }
 
         public virtual void ToPreviousState()

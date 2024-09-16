@@ -10,7 +10,7 @@ namespace BoilerplateRomi.Models
         public Action NoAction;
         public string YesText = "Yes";
         public string NoText = "No";
-        public Color YesColor = Color.white;
+        public Color YesColor = Color.black;
         public Color NoColor = Color.black;
         public int SafeTap = 1;
 

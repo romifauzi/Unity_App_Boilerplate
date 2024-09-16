@@ -1,10 +1,9 @@
 using System;
-using McKenna;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using BoilerplateRomi.Enums;
-using UnityEngine;
+
 
 namespace BoilerplateRomi.StateMachine
 {
@@ -19,14 +18,14 @@ namespace BoilerplateRomi.StateMachine
         public event Action<EStateName,bool> OnOverlayUpdate;
 
         public EStateName ENextState { get; private set; }
-        public EStateName ECurrentState { get => currentState?.StateName ?? EStateName.None; }
+        public EStateName ECurrentState { get => currentState?.StateName ?? EStateName.NONE; }
         public EStateName EPreviousState { get => previousState.StateName; }
 
         public event System.Action<Enums.EStateName> OnStateChanged;
         
-        public override IEnumerator Setup(Main main)
+        public override IEnumerator Setup(ApplicationController applicationController)
         {
-            yield return base.Setup(main);
+            yield return base.Setup(applicationController);
         }
 
         protected void AddState(BaseState state)

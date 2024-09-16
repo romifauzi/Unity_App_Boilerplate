@@ -1,19 +1,18 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using BoilerplateRomi.Enums;
 using UnityEngine;
-using DG.Tweening;
 
 namespace BoilerplateRomi.Views
 {
     public class UIManager : CoreScript
     {
-        [SerializeField] UIView[] views;
+        [SerializeField] private UIView[] views;
+        [SerializeField] private UIView defaultView;
+        [SerializeField] private ToastModalView toastModalView;
 
         private UIView _currentView;
         private UIView _previousView;
-        [SerializeField] private UIView defaultView;
+
+        public ToastModalView ToastModalView => toastModalView;
         
         public override IEnumerator Setup(ApplicationController main)
         {

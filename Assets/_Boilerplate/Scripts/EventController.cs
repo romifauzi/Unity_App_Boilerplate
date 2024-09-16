@@ -1,14 +1,15 @@
 using System;
 using System.Collections.Generic;
-using UnityEngine;
 
-namespace McKenna
+namespace BoilerplateRomi
 {
     public enum EventId
     {
+        EventTest,
+        OnBackPressedAndroid
     }
     
-    public class EventControl
+    public class EventController
     {
         private static readonly Dictionary<EventId, List<Action>> _actions = new Dictionary<EventId, List<Action>>();
         private static readonly Dictionary<EventId, Dictionary<Type, List<object>>> _actionsT = new Dictionary<EventId, Dictionary<Type, List<object>>>();

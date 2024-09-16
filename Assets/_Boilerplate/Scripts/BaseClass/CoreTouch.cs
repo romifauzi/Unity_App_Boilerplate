@@ -1,15 +1,13 @@
 using System.Collections;
-using System.Collections.Generic;
-using McKenna;
 using UnityEngine;
 
 namespace BoilerplateRomi.Boilerplate
 {
     public abstract class CoreTouch : CoreScript
     {
-        public override IEnumerator Setup(Main main)
+        public override IEnumerator Setup(ApplicationController applicationController)
         {
-            yield return base.Setup(main);
+            yield return base.Setup(applicationController);
             RegisterEvents();
         }
 

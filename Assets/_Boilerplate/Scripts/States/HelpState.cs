@@ -1,8 +1,7 @@
+using BoilerplateRomi.Views;
 using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
-namespace Locglo.Boilerplate
+namespace BoilerplateRomi.StateMachine
 {
     public class HelpState : BaseState
     {
@@ -13,7 +12,7 @@ namespace Locglo.Boilerplate
 
         public override IEnumerator StateStart()
         {
-            applicationController.UiManager.DisplayView(Enums.EViewName.HELP);
+            _applicationController.UiManager.DisplayView<HelpView>();
             yield return base.StateStart();
         }
 
@@ -24,7 +23,7 @@ namespace Locglo.Boilerplate
 
         public override IEnumerator StateEnd()
         {
-            applicationController.UiManager.HideCurrentView();
+            _applicationController.UiManager.HideCurrentView();
             yield return base.StateEnd();
         }
     }
