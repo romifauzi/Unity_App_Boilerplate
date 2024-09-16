@@ -5,7 +5,7 @@ using UnityEditor;
 using DG.DOTweenEditor;
 using DG.Tweening;
 
-namespace Locglo.Boilerplate
+namespace BoilerplateRomi.Views
 {
     [CustomEditor(typeof(UISequencer))]
     public class UISequencerEditor : Editor

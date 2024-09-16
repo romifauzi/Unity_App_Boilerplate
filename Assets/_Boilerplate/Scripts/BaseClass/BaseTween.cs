@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-namespace Locglo.Boilerplate
+namespace BoilerplateRomi.Views
 {
     public abstract class BaseTween : MonoBehaviour
     {
@@ -50,25 +50,25 @@ namespace Locglo.Boilerplate
         protected virtual void OnDisplayStart()
         {
             onDisplayStart?.Invoke();
-            Extensions.Log(gameObject, "Display Tween Start");
+            //Extensions.Log(gameObject, "Display Tween Start");
         }
 
         protected virtual void OnDisplayEnd()
         {
             onDisplayEnd?.Invoke();
-            Extensions.Log(gameObject, "Display Tween End");
+            //Extensions.Log(gameObject, "Display Tween End");
         }
 
         protected virtual void OnHideStart()
         {
             onHideStart?.Invoke();
-            Extensions.Log(gameObject, "Hide Tween Start");
+            //Extensions.Log(gameObject, "Hide Tween Start");
         }
 
         protected virtual void OnHideEnd()
         {
             onHideEnd?.Invoke();
-            Extensions.Log(gameObject, "Hide Tween End");
+            //Extensions.Log(gameObject, "Hide Tween End");
         }
 
         /// <summary>
@@ -94,6 +94,12 @@ namespace Locglo.Boilerplate
             else
                 GetTween(reverse).Restart();
         }
+        
+        public virtual void StopSequence(bool reverse = false)
+        {
+            GetTween(reverse).Rewind();
+        }
+        
         public bool IsSequencePlaying()
         {
             return reverseSeq.IsPlaying() || forwardSeq.IsPlaying();

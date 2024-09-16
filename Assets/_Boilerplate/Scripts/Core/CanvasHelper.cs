@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Locglo.Boilerplate
+namespace BoilerplateRomi.Boilerplate
 {
     public class CanvasHelper : MonoBehaviour
     {

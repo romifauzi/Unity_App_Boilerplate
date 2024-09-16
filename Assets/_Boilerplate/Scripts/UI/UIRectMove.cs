@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-namespace Locglo.Boilerplate
+namespace BoilerplateRomi.Views
 {
     public class UIRectMove : BaseTween
     {
         [SerializeField] Vector2 movePos;
         private RectTransform rect;
+
+        public bool initTransform;
 
         private Vector3 initialPos, targetPos;
 
@@ -25,6 +27,9 @@ namespace Locglo.Boilerplate
 
             reverseSeq.AppendCallback(delegate { rect.anchoredPosition = targetPos; });
             reverseSeq.Append(rect.DOAnchorPos(initialPos, duration)).SetEase(easeType);
+
+            if (initTransform)
+                rect.anchoredPosition = initialPos;
 
             base.Initialize(ignoreTimeScale);
         }

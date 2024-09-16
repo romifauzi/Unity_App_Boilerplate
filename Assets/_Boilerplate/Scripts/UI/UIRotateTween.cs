@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Locglo.Boilerplate
+namespace BoilerplateRomi.Views
 {
     public class UIRotateTween : BaseTween
     {

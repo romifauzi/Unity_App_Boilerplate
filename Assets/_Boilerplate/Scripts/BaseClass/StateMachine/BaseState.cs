@@ -1,27 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
+using BoilerplateRomi.Enums;
+using McKenna;
 using UnityEngine;
-using static Locglo.Boilerplate.Enums;
+using EventId = McKenna.EventId;
 
-namespace Locglo.Boilerplate
+namespace BoilerplateRomi.StateMachine
 {
     public class BaseState
     {
-        protected ApplicationController applicationController;
-        protected EStateName stateName;
+        //protected Main Main;
+        protected readonly EStateName EStateName;
+        protected static object Payload;
 
-        public EStateName StateName { get => stateName; }
+        public EStateName StateName { get => EStateName; }
 
-        public BaseState(ApplicationController applicationController, EStateName stateName)
+        public BaseState(Main main, EStateName eStateName)
         {
-            this.applicationController = applicationController;
-            this.stateName = stateName;
+            //this.Main = main;
+            this.EStateName = eStateName;
         }
 
         public virtual IEnumerator StateStart()
         {
-            Debug.LogFormat("Time: {0}, {1} state started", Time.time, stateName);
+            Extensions.Log("Time: {0}, {1} state started", Time.time, EStateName);
             yield return null;
+            EventsController.AddListener(EventId.OnBackPressed, OnBackPressed);
         }
 
         public virtual void StateUpdate()
@@ -31,8 +35,19 @@ namespace Locglo.Boilerplate
 
         public virtual IEnumerator StateEnd()
         {
-            Debug.LogFormat("Time: {0}, {1} state ended", Time.time, stateName);
+            Extensions.Log("Time: {0}, {1} state ended", Time.time, EStateName);
             yield return null;
+            EventsController.RemoveListener(EventId.OnBackPressed, OnBackPressed);
+        }
+
+        public virtual void ToPreviousState()
+        {
+            
+        }
+        
+        public virtual void OnBackPressed()
+        {
+            Extensions.Log($"Back Pressed, State: {EStateName}");
         }
     }
 }

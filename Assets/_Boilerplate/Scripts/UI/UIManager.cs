@@ -1,22 +1,24 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using BoilerplateRomi.Enums;
 using UnityEngine;
 using DG.Tweening;
-using static Locglo.Boilerplate.Enums;
 
-namespace Locglo.Boilerplate
+namespace BoilerplateRomi.Views
 {
     public class UIManager : CoreScript
     {
         [SerializeField] UIView[] views;
 
-        UIView currentView;
-        UIView previousView;
-
-        public override IEnumerator Setup(ApplicationController applicationController)
+        private UIView _currentView;
+        private UIView _previousView;
+        [SerializeField] private UIView defaultView;
+        
+        public override IEnumerator Setup(ApplicationController main)
         {
-            InitView(applicationController);
-            return base.Setup(applicationController);;
+            InitView(main);
+            return base.Setup(main);
         }
 
         private void InitView(ApplicationController appController)
@@ -25,38 +27,44 @@ namespace Locglo.Boilerplate
             {
                 item.SetupView(appController);
             }
-        }
 
-        private UIView GetView(EViewName view)
+            _currentView = defaultView;
+        }
+        
+        public T GetView<T>() where T: UIView
         {
             foreach (var item in views)
             {
-                if (item.ViewName == view)
-                    return item;
+                if (item is T view)
+                    return view;
             }
 
             return null;
         }
 
-        public void DisplayView(EViewName newView)
+        public void DisplayView<T>() where T:UIView
         {
-            //if (currentView != null)
-            //{
-            //    previousView = currentView;
-            //    previousView.GetDisplaySequence(true).Play();
-            //}
+            if (_currentView is T)
+            {
+                return;
+            }
 
-            currentView = GetView(newView);
-            currentView.PlaySequence();
+            _currentView = GetView<T>();
+            if (_currentView == null) return;
+            _currentView.gameObject.SetActive(true);
+            _currentView.PlaySequence();
         }
 
         public void HideCurrentView()
         {
-            if (currentView != null)
-            {
-                previousView = currentView;
-                previousView.PlaySequence(true);
-            }
+            if (_currentView == null) return;
+            _previousView = _currentView;
+            _previousView.PlaySequence(true);
+        }
+
+        public UIView GetCurrentView()
+        {
+            return _currentView;
         }
     }
 }

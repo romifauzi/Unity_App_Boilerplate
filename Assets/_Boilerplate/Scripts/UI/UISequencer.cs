@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using BoilerplateRomi.Enums;
 using UnityEngine;
 using DG.Tweening;
-using static Locglo.Boilerplate.Enums;
 
-namespace Locglo.Boilerplate
+namespace BoilerplateRomi.Views
 {
     public class UISequencer : BaseTween
     {
@@ -58,17 +58,17 @@ namespace Locglo.Boilerplate
             base.Initialize(ignoreTimeScale);
         }
 
-        void AddTween(ESequenceType type, Sequence seq, Sequence tween, float step)
+        void AddTween(Enums.ESequenceType type, Sequence seq, Sequence tween, float step)
         {
             switch (type)
             {
-                case ESequenceType.PARALLEL:
+                case Enums.ESequenceType.PARALLEL:
                     seq.Join(tween);
                     break;
-                case ESequenceType.SERIAL:
+                case Enums.ESequenceType.SERIAL:
                     seq.Append(tween);
                     break;
-                case ESequenceType.STAGGERED:
+                case Enums.ESequenceType.STAGGERED:
                     seq.Insert(step, tween);
                     break;
             }

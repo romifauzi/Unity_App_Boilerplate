@@ -4,7 +4,7 @@ using UnityEngine;
 using Lean.Touch;
 using System;
 
-namespace Locglo.Boilerplate
+namespace BoilerplateRomi
 {
     public class TouchManager : CoreScript
     {
@@ -13,11 +13,11 @@ namespace Locglo.Boilerplate
         private List<Action<Vector2, Vector2>> dragActions = new List<Action<Vector2, Vector2>>();
         private List<Action<Vector2>> tapActions = new List<Action<Vector2>>();
 
-        public override IEnumerator Setup(ApplicationController applicationController)
+        public override IEnumerator Setup(ApplicationController main)
         {
             LeanTouch.OnGesture += OnGesture;
             LeanTouch.OnFingerTap += OnTap;
-            return base.Setup(applicationController);
+            return base.Setup(main);
         }
 
         private void OnDestroy()

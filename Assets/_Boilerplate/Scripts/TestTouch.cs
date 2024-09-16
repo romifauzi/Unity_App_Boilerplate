@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Locglo.Boilerplate
+namespace BoilerplateRomi.Boilerplate
 {
     public class TestTouch : CoreTouch, IPointerDownHandler, IPointerUpHandler
     {
@@ -13,7 +13,7 @@ namespace Locglo.Boilerplate
         // Start is called before the first frame update
         void Start()
         {
-            StartCoroutine(Setup(ApplicationController.Instance));
+            // StartCoroutine(Setup(Main.Instance));
             rectTransform = GetComponent<RectTransform>();
         }
 

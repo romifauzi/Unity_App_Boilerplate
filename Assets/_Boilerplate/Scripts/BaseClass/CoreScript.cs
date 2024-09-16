@@ -1,25 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static Locglo.Boilerplate.Enums;
+using BoilerplateRomi.Enums;
+using McKenna;
 
-namespace Locglo.Boilerplate
+namespace BoilerplateRomi
 {
     public abstract class CoreScript : MonoBehaviour
     {
-        protected EInitCondition init = EInitCondition.NO;
-        protected ApplicationController applicationController;
+        protected Enums.EInitCondition init = Enums.EInitCondition.NO;
+        protected ApplicationController Main;
 
-        public virtual IEnumerator Setup(ApplicationController applicationController)
+        public virtual IEnumerator Setup(ApplicationController main)
         {
-            init = EInitCondition.YES;
-            this.applicationController = applicationController;
+            init = Enums.EInitCondition.YES;
+            this.Main = main;
             yield return null;
         }
 
         private void Update()
         {
-            if (init == EInitCondition.NO)
+            if (init == Enums.EInitCondition.NO)
                 return;
 
             CoreUpdate();

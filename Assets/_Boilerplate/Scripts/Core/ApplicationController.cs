@@ -1,9 +1,9 @@
 using System.Collections;
-using System.Collections.Generic;
+using BoilerplateRomi.Enums;
 using UnityEngine;
-using static Locglo.Boilerplate.Enums;
 
-namespace Locglo.Boilerplate
+
+namespace BoilerplateRomi
 {
     public class ApplicationController : MonoBehaviour
     {

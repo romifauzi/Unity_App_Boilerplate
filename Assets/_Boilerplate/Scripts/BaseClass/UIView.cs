@@ -1,26 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
-using static Locglo.Boilerplate.Enums;
 using DG.Tweening;
+using UnityEngine.UI;
+using BoilerplateRomi.Models;
 
-namespace Locglo.Boilerplate
+namespace BoilerplateRomi.Views
 {
     [RequireComponent(typeof(Canvas))]
+    [RequireComponent(typeof(GraphicRaycaster))]
     public abstract class UIView : MonoBehaviour
     {
-        [SerializeField] BaseTween displayTween;
+        [SerializeField] protected BaseTween displayTween;
         [SerializeField] bool hideOnStart = true;
         [SerializeField] protected bool hideGameObjectOnDisable;
         [SerializeField] bool ignoreTimeScale;
-        [SerializeField] EViewName viewName;
+        //[SerializeField] Enums.EViewName viewName;
 
         protected Canvas canvas;
-        protected ApplicationController applicationController;
+        protected Action<ModalOptions> _showDialog;
+        protected Action<ToastOptions> _showToast;
 
         public bool IsActive => canvas.enabled && gameObject.activeInHierarchy;
 
-        public EViewName ViewName { get => viewName; }
+        //public Enums.EViewName ViewName { get => viewName; }
 
         protected virtual void Awake()
         {
@@ -36,9 +38,10 @@ namespace Locglo.Boilerplate
                 OnHideEnd();
         }
 
-        public virtual void SetupView(ApplicationController applicationController)
+        public virtual void SetupView(ApplicationController main)
         {
-            this.applicationController = applicationController;
+            _showDialog = main.UIController.ToastModalView.ShowDialog;
+            _showToast = main.UIController.ToastModalView.ShowToast;
         }
 
         protected virtual void OnEnable()

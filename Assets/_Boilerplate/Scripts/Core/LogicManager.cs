@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using BoilerplateRomi.StateMachine;
 using UnityEngine;
-using static Locglo.Boilerplate.Enums;
 
-namespace Locglo.Boilerplate
+namespace BoilerplateRomi
 {
     public class LogicManager : BaseStateMachine
     {
