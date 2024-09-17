@@ -21,12 +21,12 @@ namespace BoilerplateRomi.Enums
     /// <summary>
     /// State name enum, to be used with state machine
     /// </summary>
-    public enum EStateName
+    public static class EStateName
     {
-        MAIN,
-        START,
-        HELP,
-        NONE
+        public const string Main = "MAIN";
+        public const string Start = "START";
+        public const string Help = "HELP";
+        public const string None = "NONE";
     }
 
     /// <summary>

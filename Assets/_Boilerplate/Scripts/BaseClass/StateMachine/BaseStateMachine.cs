@@ -13,15 +13,15 @@ namespace BoilerplateRomi.StateMachine
         private BaseState previousState;
         private BaseState overlayState;
 
-        private Dictionary<Enums.EStateName, BaseState> stateList = new Dictionary<Enums.EStateName, BaseState>();
+        private Dictionary<string, BaseState> stateList = new Dictionary<string, BaseState>();
         
-        public event Action<EStateName,bool> OnOverlayUpdate;
+        public event Action<string,bool> OnOverlayUpdate;
 
-        public EStateName ENextState { get; private set; }
-        public EStateName ECurrentState { get => currentState?.StateName ?? EStateName.NONE; }
-        public EStateName EPreviousState { get => previousState.StateName; }
+        public string ENextState { get; private set; }
+        public string ECurrentState { get => currentState?.StateName ?? EStateName.None; }
+        public string EPreviousState { get => previousState.StateName; }
 
-        public event System.Action<Enums.EStateName> OnStateChanged;
+        public event Action<string> OnStateChanged;
         
         public override IEnumerator Setup(ApplicationController applicationController)
         {
@@ -45,13 +45,13 @@ namespace BoilerplateRomi.StateMachine
             return state.Value as T;
         }
 
-        public void SwitchState(EStateName newState)
+        public void SwitchState(string newState)
         {
-            if (ECurrentState == newState && overlayState == null) return;
+            if (ECurrentState.Equals(newState) && overlayState == null) return;
             StartCoroutine(SwitchStateCoroutine(stateList[newState]));
         }
 
-        public void OverlayState(EStateName overlayState)
+        public void OverlayState(string overlayState)
         {
             StartCoroutine(OverlayStateCoroutine(stateList[overlayState]));
         }

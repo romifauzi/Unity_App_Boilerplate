@@ -7,20 +7,20 @@ namespace BoilerplateRomi.StateMachine
     public class BaseState
     {
         protected ApplicationController _applicationController;
-        protected readonly EStateName EStateName;
+        protected readonly string _stateName;
         protected static object Payload;
 
-        public EStateName StateName { get => EStateName; }
+        public string StateName { get => _stateName; }
 
-        public BaseState(ApplicationController applicationController, EStateName eStateName)
+        public BaseState(ApplicationController applicationController, string stateName)
         {
             _applicationController = applicationController;
-            this.EStateName = eStateName;
+            _stateName = stateName;
         }
 
         public virtual IEnumerator StateStart()
         {
-            Extensions.Log("Time: {0}, {1} state started", Time.time, EStateName);
+            Extensions.Log("Time: {0}, {1} state started", Time.time, _stateName);
             yield return null;
             EventController.AddListener(EventId.OnBackPressedAndroid, OnBackPressed);
         }
@@ -32,7 +32,7 @@ namespace BoilerplateRomi.StateMachine
 
         public virtual IEnumerator StateEnd()
         {
-            Extensions.Log("Time: {0}, {1} state ended", Time.time, EStateName);
+            Extensions.Log("Time: {0}, {1} state ended", Time.time, _stateName);
             yield return null;
             EventController.RemoveListener(EventId.OnBackPressedAndroid, OnBackPressed);
         }
@@ -44,7 +44,7 @@ namespace BoilerplateRomi.StateMachine
         
         public virtual void OnBackPressed()
         {
-            Extensions.Log($"Back Pressed, State: {EStateName}");
+            Extensions.Log($"Back Pressed, State: {_stateName}");
         }
     }
 }

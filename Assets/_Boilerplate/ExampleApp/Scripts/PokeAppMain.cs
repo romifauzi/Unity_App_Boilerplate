@@ -1,12 +1,13 @@
 using System.Collections;
+using BoilerplateRomi;
 using BoilerplateRomi.Enums;
 using BoilerplateRomi.Views;
 using UnityEngine;
 
 
-namespace BoilerplateRomi
+namespace ExampleApp
 {
-    public class ApplicationController : MonoBehaviour
+    public class PokeAppMain : ApplicationController
     {
         #region Variables
         [SerializeField] private string startState;
@@ -35,7 +36,7 @@ namespace BoilerplateRomi
             StartCoroutine(InitApp());
         }
 
-        protected virtual IEnumerator InitApp()
+        protected override IEnumerator InitApp()
         {
             yield return LogicManager.Setup(this);
             yield return UiManager.Setup(this);

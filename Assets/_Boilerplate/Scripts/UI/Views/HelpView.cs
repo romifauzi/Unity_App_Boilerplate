@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using BoilerplateRomi.Enums;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,7 +16,7 @@ namespace BoilerplateRomi.Views
 
         void GoToMainState()
         {
-            _applicationController.LogicManager.SwitchState(Enums.EStateName.MAIN);
+            _applicationController.LogicManager.SwitchState(EStateName.Main);
         }
     }
 }

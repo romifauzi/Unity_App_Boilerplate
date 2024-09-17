@@ -1,3 +1,4 @@
+using BoilerplateRomi.Enums;
 using BoilerplateRomi.Views;
 using System.Collections;
 
@@ -5,7 +6,7 @@ namespace BoilerplateRomi.StateMachine
 {
     public class MainState : BaseState
     {
-        public MainState(ApplicationController applicationController) : base(applicationController, Enums.EStateName.MAIN)
+        public MainState(ApplicationController applicationController) : base(applicationController, EStateName.Main)
         {
 
         }

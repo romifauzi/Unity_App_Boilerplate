@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 934688055175099686}
   - component: {fileID: 934688055175099683}
   - component: {fileID: 934688055175099680}
+  - component: {fileID: 1328345197041784978}
   m_Layer: 5
   m_Name: ModalDialogPanel
   m_TagString: Untagged
@@ -119,6 +120,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 2
+--- !u!114 &1328345197041784978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 934688055175099684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 140fb9fb24bd9c44a972ecb534718d04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  easeType: 7
+  invertTween: 1
+  duration: 0.5
+  movePos: {x: 0, y: -200}
+  initTransform: 1
 --- !u!1 &934688055955420671
 GameObject:
   m_ObjectHideFlags: 0
@@ -414,7 +432,6 @@ GameObject:
   - component: {fileID: 934688056304654889}
   - component: {fileID: 934688056304654894}
   - component: {fileID: 934688056304654895}
-  - component: {fileID: 934688056304654892}
   m_Layer: 5
   m_Name: ModalDialogView
   m_TagString: Untagged
@@ -460,7 +477,7 @@ MonoBehaviour:
   duration: 0.5
   tweens:
   - {fileID: 934688056304654895}
-  - {fileID: 934688056304654892}
+  - {fileID: 1328345197041784978}
   sequenceType: 0
   staggerInterval: 0
 --- !u!225 &934688056304654894
@@ -493,23 +510,6 @@ MonoBehaviour:
   fadeCanvas: {fileID: 934688056304654894}
   initCanvasGroup: 1
   targetAlpha: 0
---- !u!114 &934688056304654892
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 934688056304654882}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 140fb9fb24bd9c44a972ecb534718d04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  easeType: 7
-  invertTween: 1
-  duration: 0.5
-  movePos: {x: 0, y: -200}
-  initTransform: 1
 --- !u!1 &934688056582133994
 GameObject:
   m_ObjectHideFlags: 0

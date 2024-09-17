@@ -1,3 +1,4 @@
+using BoilerplateRomi.Enums;
 using BoilerplateRomi.Models;
 using UnityEngine;
 using UnityEngine.UI;
@@ -23,7 +24,7 @@ namespace BoilerplateRomi.Views
             _options.Message = "Do you want to go back to Start page?";
             _options.YesText = "Yes, I'm bored here";
             _options.NoText = "I'll stay a bit";
-            _options.YesAction = () => _applicationController.LogicManager.SwitchState(Enums.EStateName.START);
+            _options.YesAction = () => _applicationController.LogicManager.SwitchState(EStateName.Start);
             _showDialog?.Invoke(_options);
         }
         void GoToHelpState()
@@ -31,7 +32,7 @@ namespace BoilerplateRomi.Views
             _options.Message = "Do you want to go to Help page?";
             _options.YesText = "Yes, I need guidance";
             _options.NoText = "Nah";
-            _options.YesAction = ()=> _applicationController.LogicManager.SwitchState(Enums.EStateName.HELP);
+            _options.YesAction = ()=> _applicationController.LogicManager.SwitchState(EStateName.Help);
             _showDialog?.Invoke(_options);
         }
     }

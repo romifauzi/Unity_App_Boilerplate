@@ -1987,7 +1987,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b737c84b647cce6489fa312bf5038477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startState: 1
+  startState: START
   logicManager: {fileID: 1128519135}
   uiManager: {fileID: 1146930308}
   touchManager: {fileID: 1220300312}
